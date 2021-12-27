@@ -1,2 +1,2 @@
-# pocketscrapper
-Fetches the content and extract the readable data from pocketcli bookmarks
+# scrapper
+Fetches the website contents and extracts readable data
