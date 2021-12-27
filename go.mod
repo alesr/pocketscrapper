@@ -1,9 +1,9 @@
-module github.com/alesr/pocketscrapper
+module github.com/alers/scrapper
 
 go 1.17
 
 require (
-	github.com/alesr/pocketcli v0.0.0-20211227003041-d92dce1e22fb
+	github.com/alesr/pocketcli v0.0.0-20211227175136-37212e496e36
 	github.com/cixtor/readability v1.0.0
 	github.com/google/uuid v1.3.0
 )
