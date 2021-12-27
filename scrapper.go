@@ -1,4 +1,4 @@
-package pocketscrapper
+package scrapper
 
 import (
 	"bytes"
