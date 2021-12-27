@@ -1,4 +1,4 @@
-module github.com/alers/scrapper
+module github.com/alesr/scrapper
 
 go 1.17
 
