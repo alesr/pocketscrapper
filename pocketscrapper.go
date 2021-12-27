@@ -23,12 +23,12 @@ type (
 	}
 
 	Item struct {
-		originID   int
-		id         string
-		title      string
-		url        string
-		rawContent []byte
-		article    *readability.Article
+		OriginID   int
+		ID         string
+		Title      string
+		URL        string
+		RawContent []byte
+		Article    *readability.Article
 	}
 )
 
@@ -66,19 +66,19 @@ func (s *Scrapper) process(ctx context.Context, item *Item, itemChan chan *Item,
 	fetchCtx, cancel := context.WithTimeout(ctx, defaultCtxTimeout)
 	defer cancel()
 
-	content, err := s.fetchPageContent(fetchCtx, item.url)
+	content, err := s.fetchPageContent(fetchCtx, item.URL)
 	if err != nil {
-		errChan <- fmt.Errorf("could not fetch page content for item '%s': %s", item.id, err)
+		errChan <- fmt.Errorf("could not fetch page content for item '%s': %s", item.ID, err)
 		return
 	}
-	item.rawContent = content
+	item.RawContent = content
 
-	article, err := s.extractReadableContent(content, item.url)
+	article, err := s.extractReadableContent(content, item.URL)
 	if err != nil {
-		errChan <- fmt.Errorf("could not extract article for item '%s': %s", item.id, err)
+		errChan <- fmt.Errorf("could not extract article for item '%s': %s", item.ID, err)
 		return
 	}
-	item.article = article
+	item.Article = article
 	itemChan <- item
 }
 
@@ -107,10 +107,10 @@ func parsePocketBookmarks(bookmarks map[string]pocketcli.Bookmark) []*Item {
 	items := make([]*Item, 0, len(bookmarks))
 	for _, b := range bookmarks {
 		items = append(items, &Item{
-			id:       uuid.NewString(),
-			originID: b.ID,
-			title:    b.Title,
-			url:      b.URL,
+			ID:       uuid.NewString(),
+			OriginID: b.ID,
+			Title:    b.Title,
+			URL:      b.URL,
 		})
 	}
 	return items
