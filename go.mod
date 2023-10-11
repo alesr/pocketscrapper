@@ -8,4 +8,4 @@ require (
 	github.com/google/uuid v1.3.0
 )
 
-require golang.org/x/net v0.7.0 // indirect
+require golang.org/x/net v0.17.0 // indirect
